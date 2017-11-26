@@ -109,3 +109,8 @@ font-size: 0;
 	color: #F15B31;
 	font-weight: 700;
 }
+
+button {
+	background-color: #DDDDDD;
+	margin: 0 auto;
+}
