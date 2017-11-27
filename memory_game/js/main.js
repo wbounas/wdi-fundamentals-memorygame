@@ -50,6 +50,21 @@ var flipCard = function () {
 	}
 };
 
+var board = document.getElementById('game-board');
+
+
+var reset = function () {
+  //remove the cards from the board
+  while(board.hasChildNodes()){
+    board.removeChild(board.firstChild);
+  }
+  //remove elements from the cardsInPlay array
+cardsInPlay = [];
+//create a new board
+createBoard();
+};
+
+
 var createBoard = function () {
 	for (var i = 0; i < cards.length; i++) {
 	var cardElement = document.createElement('img');
@@ -60,24 +75,24 @@ var createBoard = function () {
 	}
 };
 
-var startOver = document.getElementById('reset');
-startOver.setAttribute('onclick', resetGame);
-startOver.setAttribute('value', 'Reset');
-document.getElementById('game-board').appendChild(startOver);
-
-var resetGame = function () {
-	for (var i = cards.length; i > 0; i--) {
-		cardsInPlay.pop();
-	}
-};
-
 var scoreBoard = function () {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		// Add a point to the player's score
 	} else {
-		// Subtract a point to the player's score
+		// Subtract a point from the player's score
 	}
 }
+
+/*
+var reset = function () {
+cardsInPlay = [];
+createBoard();
+};
+*/
+
+var board = document.getElementById('game-board');
+
+document.getElementById('reset').addEventListener('click', reset);
 
 createBoard();
 
