@@ -86,7 +86,7 @@ var scoreBoard = function () {
 		playerScore -= 1;
 		console.log('Bummer! Player has ' + playerScore + ' points!');
 	}
-}
+};
 
 var playerScore = 0;
 
@@ -97,7 +97,7 @@ function shuffleArray(cardsInPlay) {
         cardsInPlay[i] = cardsInPlay[j];
         cardsInPlay[j] = temp;
     }
-}
+};
 
 /*
 var reset = function () {
