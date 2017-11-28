@@ -47,40 +47,53 @@ var flipCard = function () {
 
 	if (cardsInPlay.length === 2) {
 		checkForMatch();
+		scoreBoard();
 	}
 };
 
+
 var board = document.getElementById('game-board');
 
-
 var reset = function () {
-  //remove the cards from the board
-  while(board.hasChildNodes()){
-    board.removeChild(board.firstChild);
-  }
-  //remove elements from the cardsInPlay array
-cardsInPlay = [];
-//create a new board
-createBoard();
+	//remove the cards from the board
+	while(board.hasChildNodes()){
+    	board.removeChild(board.firstChild);
+	}
+  	//remove elements from the cardsInPlay array
+	cardsInPlay = [];
+	//create a new board
+	createBoard();
 };
 
 
 var createBoard = function () {
 	for (var i = 0; i < cards.length; i++) {
-	var cardElement = document.createElement('img');
-	cardElement.setAttribute('src', "images/back.png");
-	cardElement.setAttribute('data-id', i);
-	cardElement.addEventListener('click', flipCard);
-	document.getElementById('game-board').appendChild(cardElement);
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', "images/back.png");
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
 	}
 };
 
+var playerScore = 0;
+
 var scoreBoard = function () {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
-		// Add a point to the player's score
+		playerScore += 1;
+		console.log('Nice Job, Yo! Player has ' + playerScore + ' points!');
 	} else {
-		// Subtract a point from the player's score
+		playerScore -= 1;
+		console.log('Bummer! Player has ' + playerScore + ' points!');
 	}
+}
+function shuffleArray(cardsInPlay) {
+    for (var i = cardsInPlay.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = cardsInPlay[i];
+        cardsInPlay[i] = cardsInPlay[j];
+        cardsInPlay[j] = temp;
+    }
 }
 
 /*
@@ -93,8 +106,12 @@ createBoard();
 var board = document.getElementById('game-board');
 
 document.getElementById('reset').addEventListener('click', reset);
+document.getElementById('reset').addEventListener('click', shuffleArray);
 
+scoreBoard();
 createBoard();
+
+
 
 
 
