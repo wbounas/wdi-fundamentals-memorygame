@@ -76,10 +76,10 @@ var createBoard = function () {
 	}
 };
 
-var playerScore = 0;
-
 var scoreBoard = function () {
-	if (cardsInPlay[0] === cardsInPlay[1]) {
+	if (cardsInPlay.length === 0) {
+		console.log('You can now begin the game!');
+	} else if (cardsInPlay[0] === cardsInPlay[1]) {
 		playerScore += 1;
 		console.log('Nice Job, Yo! Player has ' + playerScore + ' points!');
 	} else {
@@ -87,6 +87,9 @@ var scoreBoard = function () {
 		console.log('Bummer! Player has ' + playerScore + ' points!');
 	}
 }
+
+var playerScore = 0;
+
 function shuffleArray(cardsInPlay) {
     for (var i = cardsInPlay.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
