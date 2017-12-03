@@ -4,7 +4,7 @@ var cards = [
 	{
 		rank: "queen",
 		suit: "hearts",
-		cardImage: "images/queen-of-hearts.png"	
+		cardImage: "images/queen-of-hearts.png"
 	},
 	{
 		rank: "queen",
@@ -35,11 +35,9 @@ var checkForMatch = function () {
 
 var flipCard = function () {
 	var cardId = this.getAttribute('data-id');
-
 	console.log('User flipped ' + cards[cardId].rank);
 
 	cardsInPlay.push(cards[cardId].rank);
-
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
 
@@ -90,6 +88,7 @@ var scoreBoard = function () {
 
 var playerScore = 0;
 
+/*
 function shuffleArray(cardsInPlay) {
     for (var i = cardsInPlay.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -99,12 +98,21 @@ function shuffleArray(cardsInPlay) {
     }
 };
 
-/*
 var reset = function () {
 cardsInPlay = [];
 createBoard();
 };
 */
+
+document.body.onload = addElement;
+
+function addElement () {
+	var newDiv = document.createElement('div');
+	var newContent = document.createTextNode(playerScore);
+	newDiv.appendChild(newContent);
+	var currentDiv = document.getElementById("scorebox");
+	document.body.insertBefore(newDiv, currentDiv);
+}
 
 var board = document.getElementById('game-board');
 
@@ -113,8 +121,3 @@ document.getElementById('reset').addEventListener('click', shuffleArray);
 
 scoreBoard();
 createBoard();
-
-
-
-
-
